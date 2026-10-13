@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avinash's Important Dates</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    padding:20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+header{
+    background:#1f4e79;
+    color:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin-bottom:15px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h2{
+    color:#1f4e79;
+    margin-bottom:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#1f4e79;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+.upcoming{
+    background:#fff3cd;
+}
+
+.overdue{
+    background:#f8d7da;
+}
+
+.days{
+    font-weight:bold;
+    color:#0d6efd;
+}
+
+footer{
+    text-align:center;
+    margin-top:20px;
+    color:#666;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<h1>🎉 Personal Reminder Dashboard</h1>
+<p>Birthdays, Renewals & Important Family Dates</p>
+</header>
+
+<div class="card">
+
+<h2>📅 Important Dates</h2>
+
+<table id="dateTable">
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Category</th>
+<th>Date</th>
+<th>Days Left</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Avinash Birthday</td>
+<td>Birthday</td>
+<td data-date="2027-01-15">15-Jan</td>
+<td class="days"></td>
+</tr>
+
+<tr>
+<td>Wedding Anniversary</td>
+<td>Anniversary</td>
+<td data-date="2027-02-12">12-Feb</td>
+<td class="days"></td>
+</tr>
+
+<tr>
+<td>Son Birthday</td>
+<td>Birthday</td>
+<td data-date="2026-12-25">25-Dec</td>
+<td class="days"></td>
+</tr>
+
+<tr>
+<td>Car Insurance Renewal</td>
+<td>Insurance</td>
+<td data-date="2026-11-05">05-Nov</td>
+<td class="days"></td>
+</tr>
+
+<tr>
+<td>Passport Renewal</td>
+<td>Passport</td>
+<td data-date="2027-08-01">01-Aug</td>
+<td class="days"></td>
+</tr>
+
+<tr>
+<td>LIC Premium Due</td>
+<td>Investment</td>
+<td data-date="2026-11-15">15-Nov</td>
+<td class="days"></td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+<footer>
+Created by Avinash Patel | Personal Reminder Portal
+</footer>
+
+</div>
+
+<script>
+
+const today = new Date();
+
+document.querySelectorAll("td[data-date]").forEach(cell => {
+
+const targetDate = new Date(cell.dataset.date);
+
+const diff =
+Math.ceil(
+(targetDate - today) /
+(1000 * 60 * 60 * 24)
+);
+
+const row = cell.parentElement;
+
+row.querySelector(".days").innerText =
+diff + " Days";
+
+if(diff <= 30 && diff >= 0){
+row.classList.add("upcoming");
+}
+
+if(diff < 0){
+row.classList.add("overdue");
+}
+
+});
+
+</script>
+
+</body>
+</html>
